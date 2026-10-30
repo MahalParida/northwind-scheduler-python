@@ -33,6 +33,7 @@ def main() -> None:
         from scheduler.real_model import OpenAICompatibleModel
         model = OpenAICompatibleModel()
     else:
+        print("Demo mode: showing the fixed Priya/Sam example; custom requests are not interpreted.", file=sys.stderr)
         model = demo_model()
     agent = SchedulingAgent(model, Store.load())
     print(agent.run(request))

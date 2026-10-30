@@ -33,3 +33,12 @@ def test_combine_availability():
 def test_find_free_windows():
     free = [False, True, True, True, False, True] + [False] * 10
     assert find_free_windows(free, 2) == [1, 2]
+
+
+def test_find_free_windows_exact_fit():
+    free = [True] * 16
+
+    # Slots 14–16 represent 16:00–17:00.
+    assert find_free_windows(
+        free, slots_needed=2, start_slot=14, end_slot=16
+    ) == [14]
